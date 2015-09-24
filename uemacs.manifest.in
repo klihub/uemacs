@@ -1,0 +1,8 @@
+[
+  {
+    "application": "uemacs",
+    "description": "One Small Precious, Precious Editor To Rule Them All...",
+    "privileges": [],
+    "execute": [ "@__BINDIR__@/uemacs" ],
+  }
+]

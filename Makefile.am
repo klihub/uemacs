@@ -45,6 +45,8 @@ uemacs_CFLAGS =		\
 uemacs_LDADD = 	\
 	-lncurses
 
+uemacs.manifest: uemacs.manifest.in
+	cat $< | sed 's#@__BINDIR__@#$(bindir)#g' > $@
 
 install-data-hook:
 	$(MKDIR_P) $(DESTDIR)$(datadir)/uemacs && \
