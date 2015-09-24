@@ -39,7 +39,14 @@ uemacs_SOURCES =	\
 	utf8.c
 
 uemacs_CFLAGS =		\
-	-DAUTOCONF -DPOSIX -DUSG -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600
+	-DAUTOCONF -DPOSIX -DUSG -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 \
+	-DDATADIR=\"$(datadir)/uemacs/\"
 
 uemacs_LDADD = 	\
 	-lncurses
+
+
+install-data-hook:
+	$(MKDIR_P) $(DESTDIR)$(datadir)/uemacs && \
+		cp $(top_srcdir)/emacs.hlp $(DESTDIR)$(datadir)/uemacs && \
+		cp $(top_srcdir)/emacs.rc $(DESTDIR)$(datadir)/uemacs/.emacsrc
