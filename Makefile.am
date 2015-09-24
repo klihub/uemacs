@@ -45,10 +45,15 @@ uemacs_CFLAGS =		\
 uemacs_LDADD = 	\
 	-lncurses
 
-uemacs.manifest: uemacs.manifest.in
-	cat $< | sed 's#@__BINDIR__@#$(bindir)#g' > $@
-
 install-data-hook:
 	$(MKDIR_P) $(DESTDIR)$(datadir)/uemacs && \
 		cp $(top_srcdir)/emacs.hlp $(DESTDIR)$(datadir)/uemacs && \
 		cp $(top_srcdir)/emacs.rc $(DESTDIR)$(datadir)/uemacs/.emacsrc
+
+uemacs.manifest: uemacs.manifest.in
+	cat $< | sed 's#@__BINDIR__@#$(bindir)#g' > $@
+
+install-manifest: uemacs.manifest
+	$(MKDIR_P) $(DESTDIR)$(IOT_MANIFEST_DIR)/$(IOT_USER) && \
+		cp $(top_builddir)/uemacs.manifest \
+		   $(DESTDIR)$(IOT_MANIFEST_DIR)/$(IOT_USER)

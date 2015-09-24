@@ -36,10 +36,28 @@ AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([gethostname memmove strerror sysinfo])
 
+# Which IoT user to install under, if any.
+AC_ARG_WITH(iot-user,
+            [  --with-iot-user          IoT user name],
+            [iotusr="$with_iot_user"], [iotusr=__none__])
+
+if test "$iotusr" != "__none__"; then
+    IOT_USER="$iotusr"
+else
+    IOT_USER=""
+fi
+
+IOT_MANIFEST_DIR="/usr/share/iot/users"
+
+AC_SUBST(IOT_USER)
+AC_SUBST(IOT_MANIFEST_DIR)
+
+
 # Shave by default.
 SHAVE_INIT([build-aux], [enable])
 
 AC_CONFIG_FILES([build-aux/shave
                  build-aux/shave-libtool
-                 Makefile])
+                 Makefile
+                ])
 AC_OUTPUT
