@@ -22,13 +22,17 @@ static char *pathname[] =
 };
 #endif
 
+#ifndef DATADIR
+#  define DATADIR ""
+#endif
+
 #if	V7 | BSD | USG
 {
 	".emacsrc", "emacs.hlp",
 #if	PKCODE
 	    "/usr/global/lib/", "/usr/local/bin/", "/usr/local/lib/",
 #endif
-"/usr/local/", "/usr/lib/", ""};
+"/usr/local/", "/usr/lib/", DATADIR, ""};
 #endif
 
 #if	VMS
