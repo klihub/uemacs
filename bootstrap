@@ -1,0 +1,9 @@
+#!/bin/bash
+
+aclocal -I . && \
+    autoheader && \
+        libtoolize --copy --force && \
+            autoconf && \
+                automake --add-missing --copy
+
+exit $?
