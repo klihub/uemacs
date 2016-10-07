@@ -13,3 +13,6 @@ uemacs_SOURCES = \
     usage.c wrapper.c utf8.c
 
 uemacs_LDADD = -lcurses
+
+.emacsrc: ${top_srcdir}/emacs.rc
+	ln $< $@
