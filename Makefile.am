@@ -1,6 +1,6 @@
 bin_PROGRAMS = uemacs
 configdir    = ${libdir}
-config_DATA  = emacs.hlp .emacsrc
+config_DATA  = emacs.hlp emacs.rc
 
 uemacs_CFLAGS = \
     -DAUTOCONF -DPOSIX -DUSG -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE=600
